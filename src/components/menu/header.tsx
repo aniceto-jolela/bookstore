@@ -1,8 +1,7 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import Badge from "@mui/material/Badge";
-import NotificationsIcon from "@mui/icons-material/Notifications";
+import StoreIcon from '@mui/icons-material/Store';
 
 function Header() {
   return (
@@ -16,10 +15,8 @@ function Header() {
       >
         BOOK - STORE
       </Typography>
-      <IconButton color="inherit">
-        <Badge badgeContent={4} color="secondary">
-          <NotificationsIcon />
-        </Badge>
+      <IconButton color="inherit" style={{cursor:'default'}}>
+          <StoreIcon />
       </IconButton>
     </React.Fragment>
   );

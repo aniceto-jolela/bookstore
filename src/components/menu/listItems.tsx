@@ -20,13 +20,13 @@ export default function MainListItems() {
         to="/books"
         style={{
           textDecoration: "none",
-          color: setSelected == 1 ? "brown" : "inherit",
+          color: setSelected == 1 ? "blue" : "inherit",
         }}
         onClick={() => Selected(1)}
       >
         <ListItemButton>
-          <ListItemIcon>
-            <LayersIcon />
+          <ListItemIcon >
+            <LayersIcon color={setSelected == 1 ? "info" : "inherit"} />
           </ListItemIcon>
           <ListItemText primary="Books" />
         </ListItemButton>
@@ -36,13 +36,13 @@ export default function MainListItems() {
         to="/users"
         style={{
           textDecoration: "none",
-          color: setSelected == 2 ? "brown" : "inherit",
+          color: setSelected == 2 ? "blue" : "inherit",
         }}
         onClick={() => Selected(2)}
       >
         <ListItemButton>
           <ListItemIcon>
-            <PeopleIcon />
+            <PeopleIcon color={setSelected == 2 ? "info" : "inherit"} />
           </ListItemIcon>
           <ListItemText primary="Users" />
         </ListItemButton>
@@ -52,13 +52,13 @@ export default function MainListItems() {
         to="/checkout"
         style={{
           textDecoration: "none",
-          color: setSelected == 3 ? "brown" : "inherit",
+          color: setSelected == 3 ? "blue" : "inherit",
         }}
         onClick={() => Selected(3)}
       >
         <ListItemButton>
           <ListItemIcon>
-            <ShoppingCartIcon />
+            <ShoppingCartIcon color={setSelected == 3 ? "info" : "inherit"} />
           </ListItemIcon>
           <ListItemText primary="Checkout" />
         </ListItemButton>
