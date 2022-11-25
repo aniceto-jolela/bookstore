@@ -10,9 +10,9 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import {
-  mainListItems
-} from "./listItems";
+import 
+  MainListItems
+ from "./listItems";
 import Header from "./header";
 import { PropsChildren } from "../ts/types";
 
@@ -118,7 +118,7 @@ const MenuContent=({Children}:PropsChildren)=> {
           </Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems}
+            <MainListItems/>
            
           </List>
         </Drawer>
