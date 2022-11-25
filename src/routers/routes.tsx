@@ -1,10 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Books from "../books/books";
+import BooksId from "../books/book_id";
 import Checkout from "../checkout/checkout";
 import Layout from "../components/base-layout";
 import Body from "../dashboard/body";
-import Users from "../users/users";
+import Cart from "../users/cart";
+import UserId from "../users/user_id";
 
 const Routs = () => (
   <Layout
@@ -13,8 +15,10 @@ const Routs = () => (
         <Routes>
           <Route path="/" element={<Body />} />
           <Route path="/books" element={<Books />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/books/books_id" element={<BooksId />} />
+          <Route path="/users/user_id" element={<UserId />} />
+          <Route path="/users/user_id/cart" element={<Cart />} />
+          <Route path="/checkout/user_id" element={<Checkout />} />
         </Routes>
       </>
     }

@@ -25,7 +25,7 @@ export default function MainListItems() {
         onClick={() => Selected(1)}
       >
         <ListItemButton>
-          <ListItemIcon >
+          <ListItemIcon>
             <LayersIcon color={setSelected == 1 ? "info" : "inherit"} />
           </ListItemIcon>
           <ListItemText primary="Books" />
@@ -33,7 +33,7 @@ export default function MainListItems() {
       </Link>
 
       <Link
-        to="/users"
+        to="/users/user_id"
         style={{
           textDecoration: "none",
           color: setSelected == 2 ? "blue" : "inherit",
@@ -49,7 +49,7 @@ export default function MainListItems() {
       </Link>
 
       <Link
-        to="/checkout"
+        to="/checkout/user_id"
         style={{
           textDecoration: "none",
           color: setSelected == 3 ? "blue" : "inherit",

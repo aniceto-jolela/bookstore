@@ -8,6 +8,7 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import { Typography } from "@mui/material";
 
 
 
@@ -82,6 +83,9 @@ const Checkout = () => {
       >
         <Toolbar />
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        <Typography>
+        esta rota conterá o fluxo para efetuar o pagamento dos produtos selecionados pelo user ID
+        </Typography>
         <Table size="small">
         <TableHead>
           <TableRow>

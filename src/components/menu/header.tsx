@@ -1,7 +1,7 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import StoreIcon from '@mui/icons-material/Store';
+import StoreIcon from "@mui/icons-material/Store";
 
 function Header() {
   return (
@@ -15,8 +15,8 @@ function Header() {
       >
         BOOK - STORE
       </Typography>
-      <IconButton color="inherit" style={{cursor:'default'}}>
-          <StoreIcon />
+      <IconButton color="inherit" style={{ cursor: "default" }}>
+        <StoreIcon />
       </IconButton>
     </React.Fragment>
   );

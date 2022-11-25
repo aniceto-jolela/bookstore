@@ -119,7 +119,6 @@ const MenuContent=({Children}:PropsChildren)=> {
           <Divider />
           <List component="nav">
             <MainListItems/>
-           
           </List>
         </Drawer>
 
