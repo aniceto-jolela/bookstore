@@ -35,7 +35,8 @@ const Cart = () => {
                 height: 240,
               }}
             >
-              Esta rota exibirá o carrinho de compras de um usuário por seu ID
+              Esta rota exibirá o carrinho de compras de um usuário por seu ID <br/>
+              (ver módulo Checkout).
             </Paper>
           </Grid>
           {/* Recent Deposits */}
