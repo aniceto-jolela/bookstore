@@ -9,7 +9,6 @@ import Cart from "../users/cart";
 import UserId from "../users/user_id";
 
 
-
 const Routs = () => {
   return (
     <Layout

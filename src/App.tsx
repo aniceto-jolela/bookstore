@@ -1,7 +1,11 @@
 import * as React from "react";
-//import Routs from "./routers/routes";
-import Secured from "./routers/secured";
+import { useKeycloak } from "@react-keycloak/web";
+import Routs from "./routers/routes";
 
 export default function App() {
-  return <Secured/>
+  const { initialized } = useKeycloak();
+
+  !initialized ? <div>Loading...</div> : "";
+
+  return <Routs/>
 }

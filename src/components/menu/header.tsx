@@ -2,6 +2,7 @@ import * as React from "react";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import StoreIcon from "@mui/icons-material/Store";
+import Logout from "../../login/logout";
 
 function Header() {
   return (
@@ -18,6 +19,7 @@ function Header() {
       <IconButton color="inherit" style={{ cursor: "default" }}>
         <StoreIcon />
       </IconButton>
+      <Logout />
     </React.Fragment>
   );
 }
