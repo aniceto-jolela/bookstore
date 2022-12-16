@@ -9,6 +9,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Toolbar from "@mui/material/Toolbar";
 import { useKeycloak } from "@react-keycloak/web";
+import Avatar from '@mui/material/Avatar';
 
 
 const UserId = () => {
@@ -53,7 +54,7 @@ const UserId = () => {
                   to="/users/user_id/cart"
                   style={{ textDecoration: "none" }}
                 >
-                  See Carrinho de compra do user
+                  Ver Carrinho de compra do user
                 </Link>
               </Button>
             </Stack>
@@ -73,6 +74,9 @@ const UserId = () => {
                 <Typography variant="h5" gutterBottom component="div">Perfil de usuário </Typography>
                 
                 <Box sx={{ width: '100%', textAlign:'center' }}>
+                <Box sx={{backgroundColor:"#f8f8f8",display:"flex",justifyContent:"center",marginBottom:5}}>
+                <Avatar alt={getName} src="/static/images/avatar/3.jpg" sx={{ width: 100, height: 100,fontSize:70 }}/>
+                </Box>
                   
                 <Typography variant="h6" gutterBottom component="div">Usuário : {getName} </Typography>
                 <Typography variant="h6" gutterBottom component="div">Nome : {getFirstName} {getLastName}</Typography>

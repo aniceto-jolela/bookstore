@@ -1,9 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import Button from "@mui/material/Button";
+import { Typography } from "@mui/material";
 import Toolbar from '@mui/material/Toolbar';
+import DataTable from "../components/table/data-table";
+import Stack from '@mui/material/Stack';
 
 
 
@@ -32,11 +37,23 @@ const Cart = () => {
                 p: 2,
                 display: "flex",
                 flexDirection: "column",
-                height: 240,
+                height: 500,
               }}
             >
-              Esta rota exibirá o carrinho de compras de um usuário por seu ID <br/>
-              (ver módulo Checkout).
+              <Typography variant="h5" marginBottom={2}>Carrinho de compras </Typography>
+              <Stack direction="row" spacing={2} marginBottom={2}>
+              <Button variant="outlined" color="secondary" size="small">
+                  Reduzir
+                </Button>
+                <Button variant="outlined" color="info" size="small">
+                  Adicionar
+                </Button>
+                <Button variant="outlined" color="error" size="small">
+                  Remover
+                </Button>
+              </Stack>
+              
+              <DataTable/>
             </Paper>
           </Grid>
           {/* Recent Deposits */}
@@ -49,7 +66,20 @@ const Cart = () => {
                 height: 240,
               }}
             >
-              User ID
+              <Typography variant="h5" marginBottom={2}>total de </Typography>
+              
+              <Typography variant="h6" fontSize={14}>produtos : <Typography fontSize={14} component="span" color="#ae2929" > 1286 </Typography>  </Typography>
+              <Typography variant="h6" fontSize={14}>Itens : <Typography fontSize={14} component="span" color="#ae2929" > 86 </Typography> </Typography>
+              <Typography variant="h6" fontSize={14}>Preços : <Typography fontSize={14} component="span" color="#ae2929" > 63286 </Typography> </Typography>
+            
+              <Button color="secondary" sx={{marginTop:5}}>
+                <Link
+                  to="/checkout/user_id"
+                  style={{ textDecoration: "none" }}
+                >
+                  Checkout
+                </Link>
+              </Button>
             </Paper>
           </Grid>
         </Grid>
