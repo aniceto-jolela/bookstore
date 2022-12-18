@@ -17,7 +17,7 @@ const Routs = () => {
           <Routes>
             <Route path="/" element={<Body />} />
             <Route path="/books" element={<Books />} />
-            <Route path="/books/books_id" element={<BooksId />} />
+            <Route path="/books/:books_id" element={<BooksId />} />
             <Route path="/users/user_id" element={<UserId />} />
             <Route path="/users/user_id/cart" element={<Cart />} />
             <Route path="/checkout/user_id" element={<Checkout />} />

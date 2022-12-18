@@ -11,23 +11,15 @@ import Api from "../utils/api";
 
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
-import IconButton from "@mui/material/IconButton";
-import InfoIcon from "@mui/icons-material/Info";
 import { Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
-
-type typesBooks = [{
-  title: string,
-  subtitle: string,
-  isbn13: string,
-  price: string,
-  image: string,
-  url: string
-}]
+import { TypesBooks } from "../components/ts/types-books";
 
 const Books = () => {
-  const [getNewBooks, setNewBooks] = useState<typesBooks>();
+  const [getNewBooks, setNewBooks] = useState<TypesBooks>();
+  const [getSearchBooks, setSearchBooks] = useState();
 
+  //New
   useEffect(() => {
     Api.get("/new")
       .then((response) => setNewBooks(response.data.books))
@@ -36,10 +28,14 @@ const Books = () => {
       });
   }, []);
 
- 
-  console.log(getNewBooks)
-
-
+  //Search
+  useEffect(() => {
+    Api.get("/search/")
+      .then((response) => setSearchBooks(response.data))
+      .catch((err) => {
+        console.log("Ops! ocorreu um erro, " + err);
+      });
+  }, []);
 
   return (
     <>
@@ -96,42 +92,37 @@ const Books = () => {
                   </Box>
                 </Grid>
 
-
-                {getNewBooks===undefined?'':getNewBooks.map((item) => (
-                  <Grid key={item.image} item xs={8} md={4} lg={3}>
-                    <ImageListItem sx={{ width: "200px" }}>
-                      <img
-                        src={`${item.image}?w=248&fit=crop&auto=format`}
-                        srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                        alt={item.title}
-                        loading="lazy"
-                      />
-                      <ImageListItemBar
-                        title={`${item.title} | ${item.price}`}
-                        subtitle={`${item.subtitle} | ${item.isbn13}`}
-                        
-                        actionIcon={
-                          <IconButton
-                            sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-                            aria-label={`info about ${item.title}`}
-                          >
-                            <InfoIcon />
-                          </IconButton>
-                        }
-                      />
-                    </ImageListItem>
-                    <br />
-                  </Grid>
-                ))}
+                {getNewBooks === undefined
+                  ? ""
+                  : getNewBooks.map((item) => (
+                      <Grid key={item.image} item xs={8} md={4} lg={3}>
+                        <Link
+                          to={"/books/" + `${item.isbn13}`}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <ImageListItem sx={{ width: "200px" }}>
+                            <img
+                              src={`${item.image}?w=248&fit=crop&auto=format`}
+                              srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                              alt={item.title}
+                              loading="lazy"
+                            />
+                            <ImageListItemBar
+                              title={`${item.title} | ${item.price}`}
+                              subtitle={`${item.subtitle} | ${item.isbn13}`}
+                            />
+                          </ImageListItem>
+                        </Link>
+                        <br />
+                      </Grid>
+                    ))}
               </Paper>
             </Grid>
 
-
-           
             <Grid item xs={12}>
-              <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-               
-              </Paper>
+              <Paper
+                sx={{ p: 2, display: "flex", flexDirection: "column" }}
+              ></Paper>
             </Grid>
           </Grid>
         </Container>
