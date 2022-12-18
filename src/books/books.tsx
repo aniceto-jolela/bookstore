@@ -16,16 +16,30 @@ import InfoIcon from "@mui/icons-material/Info";
 import { Typography } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
+type typesBooks = [{
+  title: string,
+  subtitle: string,
+  isbn13: string,
+  price: string,
+  image: string,
+  url: string
+}]
+
 const Books = () => {
-  const [getNewBooks, setNewBooks] = useState();
+  const [getNewBooks, setNewBooks] = useState<typesBooks>();
 
   useEffect(() => {
     Api.get("/new")
-      .then((response) => setNewBooks(response.data))
+      .then((response) => setNewBooks(response.data.books))
       .catch((err) => {
         console.log("Ops! ocorreu um erro, " + err);
       });
   }, []);
+
+ 
+  console.log(getNewBooks)
+
+
 
   return (
     <>
@@ -54,7 +68,6 @@ const Books = () => {
               </Stack>
             </Grid>
 
-            {/* Chart */}
             <Grid item xs={12} md={12} lg={12}>
               <Paper
                 sx={{
@@ -83,18 +96,19 @@ const Books = () => {
                   </Box>
                 </Grid>
 
-                {itemData.map((item) => (
-                  <Grid key={item.img} item xs={8} md={4} lg={3}>
+
+                {getNewBooks===undefined?'':getNewBooks.map((item) => (
+                  <Grid key={item.image} item xs={8} md={4} lg={3}>
                     <ImageListItem sx={{ width: "200px" }}>
                       <img
-                        src={`${item.img}?w=248&fit=crop&auto=format`}
-                        srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                        src={`${item.image}?w=248&fit=crop&auto=format`}
+                        srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
                         alt={item.title}
                         loading="lazy"
                       />
                       <ImageListItemBar
-                        title={`${item.title} | ${item.preco}`}
-                        subtitle={`${item.author} | ${item.ISBN}`}
+                        title={`${item.title} | ${item.price}`}
+                        subtitle={`${item.subtitle} | ${item.isbn13}`}
                         
                         actionIcon={
                           <IconButton
