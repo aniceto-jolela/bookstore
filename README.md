@@ -1,124 +1,127 @@
 # bookstore
-  Um pequeno e-commerce que permita aos usuários comprar livros de tecnologia.
+A small e-commerce that allows users to buy technology books.
 
-  Os principais objetivos do aplicativo são:
+  The main objectives of the application are:
 
-   1. Garanta o acesso seguro aos usuários e seus dados
-   2. Permitir pesquisas de livros
-   3. Permitir fazer compras dos produtos selecionados
+   1. Ensure secure access to users and their data
+   2. Allow book searches
+   3. Allow shopping for selected products
 
-Todo o desenvolvimento é baseado em ReactJS, e aplicação adaptar-se a diferentes tamanhos e orientações de ecrã, todas rotas definidas
+All development is based on ReactJS, and the application adapts to different screen sizes and orientations, all defined routes
 
-## Rotas
-   - `/`: é o caminho de acesso ao aplicativo
-   - `/books`: é o caminho padrão (home) onde serão exibidos os últimos livros publicados
-   - `/books/{book_id}`: neste percurso as informações específicas de um livro serão exibidas pelo seu ID (visualização de detalhes)
-   - `/users/{user_id}` – Esta rota exibirá o perfil do usuário por seu ID
-   - `/users/{user_id}/cart` – Esta rota exibirá o carrinho de compras de um usuário por seu ID
-   - `/checkout/{user_id}`: esta rota conterá o fluxo para efetuar o pagamento dos produtos selecionados pelo user ID
+## routes
+   - `/`: is the access path to the application
+   - `/books`: is the default path (home) where the latest published books will be displayed
+   - `/books/{book_id}`: in this route the specific information of a book will be displayed by its ID (detail view)
+   - `/users/{user_id}` – This route will display the user's profile by their ID
+   - `/users/{user_id}/cart` – This route will display a user's shopping cart by their ID
+   - `/checkout/{user_id}`: this route will contain the flow to make the payment for the products selected by the user ID
 
-## Autenticação e autorização
+## Authentication and Authorization
 
-  O padrão OAuth2 é usado para autenticação do usuário. Que é suportado por um servidor [keycloak](https://www.keycloak.org/) a partir do qual serão fornecidas as credenciais para a sua utilização para o email de contacto registado pelo requerente.
+The OAuth2 standard is used for user authentication. Which is supported by a [keycloak](https://www.keycloak.org/) server from which the credentials for its use will be provided to the contact email registered by the applicant.
 
-   - O domínio de autenticação tem dois cenários possíveis: um onde o cliente se cadastra com um usuário e senha;  
-   - e outro onde é usado o acesso do **Google** para se cadastrar.
-   - Para ambos os casos, o serviço **Keycloak** já está configurado para fornecer essa funcionalidade.
+   - The authentication domain has two possible scenarios: one where the client registers with a user and password;
+   - and another where **Google** access is used to register.
+   - For both cases, the **Keycloak** service is already configured to provide this functionality.
 
-  O módulo do usuário tem duas visualizações: 
-   - uma visualiza as informações do perfil 
-   - e outra o carrinho de compras.
+  The user module has two views:
+   - a view profile information
+   - and another the shopping cart.
 
-## Perfil de usuário
 
-É exibidos os dados pessoais capturados no idToken obtido na autenticação. 
 
-  - nome completo do usuário
-  - o email
+## user profile
+
+The personal data captured in the idToken obtained in authentication is displayed.
+
+  - full user name
+  - the e-mail
   - avatar
 
-## Carrinho de compras
+## Shopping cart
 
-Esta visualização mostra todos os produtos que o usuário selecionou para uma possível compra.  
+This view shows all products that the user has selected for a possible purchase.
 
-  - para cada produto:
-      - Nome
-      - quantia
-      - preço unitário
-      - Subtotal
-  - no resumo da lista:
-      - quantidade total de produtos
-      - número total de itens
-      - Preço total
-
- A vista tem uma ação que inicie o pagamento dos produtos (ver [Modulo de checkout](#módulo-de-checkout)).
-
- A integração deste módulo é realizada a partir das operações exportadas por um serviço que está disponível no seguinte endereço https://bookstore-api.gyfted.dev/api/cart.
+- for each product:
+    - Name
+    - amount
+    - Unit price
+    - Subtotal
+    - in the list summary:
+    - total quantity of products
+    - total number of items
+    - Total price
 
 
- O serviço tem 4 operações:
+The view has an action that initiates payment for the products (see [Checkout module](#checkout-module)).
 
-   - `GET /api/cart`: obtém o carrinho de compras para o usuário atual
-   - `POST /api/cart/book`: permite adicionar ou modificar os produtos no carrinho de compras
-   - `DELETE /api/cart/book/:book_id` – remove o produto com book_id do carrinho de compras
-   - `POST /api/cart`: conclui ou fecha um carrinho de compras, esta ação deve ser executada ao concluir o checkout
+ The integration of this module is carried out from the operations exported by a service that is available at the following address https://bookstore-api.gyfted.dev/api/cart.
 
-  Todas as operações descritas acima requerem o uso de autenticação por meio do token de acesso JWT obtido por meio da autenticação do usuário.
+
+The service has 4 operations:
+
+   - `GET /api/cart`: get shopping cart for current user
+   - `POST /api/cart/book`: allows you to add or modify the products in the shopping cart
+   - `DELETE /api/cart/book/:book_id` – remove the product with book_id from the shopping cart
+   - `POST /api/cart`: completes or closes a shopping cart, this action must be performed when completing checkout
+
+  All operations described above require the use of authentication via the JWT access token obtained via user authentication.
 
 
  
- ## MÓDULO DE LIVROS
+ ## book module
 
- API ItEbooks é utilizada para a consulta das informações dos livros.  A referida API dispõe dos recursos necessários para visualizar e consultar a informação que se requer.
+ItEbooks API is used to query book information. Said API has the necessary resources to view and consult the information required.
 
-  - vista principal
 
- Nesta visualização, a lista de livros é mostrada e também tem uma opção de pesquisa. Pode se pesquisar por title, author e ISBN.
+- main view
 
- Se você clicar em qualquer livro, irá para a visualização de detalhes do livro selecionado (consulte: Visualização de detalhes)
- vista de detalhe
+In this view, the list of books is shown and also has a search option. You can search by title, author and ISBN.
 
-  - Informações detalhadas de cada livro:
+ If you click on any book, you will go to the selected book's detail view (see: Detail view)
+ detail view
 
-    - Título
-    - rubrica
-    - Autor
+- Detailed information of each book:
+
+    - Title
+    - rubric
+    - Author
     - editorial
-    - código ISBN
-    - ano de publicação
-    - preço
-    - Descrição do conteúdo
-    - Avaliação
+    - ISBN code
+    - year of publication
+    - price
+    - Content description
+    - Evaluation
 
- Além disso, haverá ações para adicionar o produto atual ao carrinho quantas vezes o usuário desejar.  Se este produto existir no carrinho, serão adicionados os valores selecionados e o existente no carrinho de compras.
+In addition, there will be actions to add the current product to the cart as many times as the user wants. If this product exists in the cart, the selected values ​​and the existing one in the shopping cart will be added.
  
 
 
-## módulo de checkout
+## checkout module
 
- Neste módulo possui 3 visualizações como passos sequenciais (steps, ou wizard).  As 3 visualizações a serem consideradas são:
+This module has 3 views as sequential steps (steps, or wizard). The 3 views to consider are:
 
-   - detalhe da compra
-   - detalhes do pagamento
-   - confirmação e obrigado
+  - purchase details
+  - payment details
+  - confirmation and thanks
 
- O usuário poderá ir e voltar desde que a compra não tenha sido confirmada.
+ The user can go back and forth as long as the purchase has not been confirmed.
  
- > Detalhe da compra
+ > Purchase detail
 
- O detalhe da compra é um resumo dos produtos que o usuário selecionou.É mostrado os produtos e suas quantidades, bem como os respectivos cálculos parciais e totais do pagamento a ser efetuado.  Essa visão se funde perfeitamente com o carrinho de compras. 
+The purchase detail is a summary of the products that the user has selected. The products and their quantities are shown, as well as the respective partial and total calculations of the payment to be made. This view merges seamlessly with the shopping cart.
  
- > Dados de pagamento
+ > Payment data
 
- Para capturar os dados de pagamento, é utilizada a integração com o Stripe.  Os solicitantes receberão as chaves de acesso de uma conta de teste para que possam realizar quantas compras desejarem usando a referida integração. O formulário básico deve registrar:
+To capture payment data, Stripe integration is used. Applicants will receive access keys for a test account so that they can make as many purchases as they wish using said integration. The basic form must record:
 
-   - os dados do meio de pagamento,
-   - dados de compra (número de produtos e número total de itens) produto e
-   - o e-mail do usuário
+  - the details of the means of payment,
+  - purchase data (number of products and total number of items) product and
+  - the user's email
 
 
- Uma vez efetuado o pagamento, o utilizador é informado do resultado do mesmo.  Caso seja bem-sucedido, é mostrado uma mensagem na referência e, é dada a opção para o usuário navegar até a visualização principal do aplicativo (consulte Visualização principal).  Em caso de erro, é exibido uma mensagem com o erro recebido e dê a opção de retornar ao carrinho de compras para tentar novamente.
-
+Once the payment has been made, the user is informed of the result of the payment. If successful, a message is shown on the reference and the user is given the option to navigate to the main view of the application (see Main View). In case of error, a message is displayed with the error received and give the option to return to the shopping cart to try again.
 
 ## Running-the-Front-End
 
@@ -129,14 +132,15 @@ $ git clone https://github.com/aniceto-jolela/bookstore.git
 # Access the project folder in terminal/cmd
 $ cd bookstore
 
-# Abre o projecto no vs code e roda este comando no terminal
+# Open the project in vs code and run this command in the terminal
 $ npm install | yarn install
 
 ```
 
+<p style='font-size:20px;color:pink'>Keycloak file</p>
+
 ```ts
-// Arquivo keycloak.ts
-//Local: src/keycloak.ts
+//File location: src/keycloak.ts
 
 import Keycloak from 'keycloak-js';
 
@@ -154,9 +158,10 @@ export default keycloak;
 
 ```
 
+<p style='font-size:20px;color:pink'>Index file</p>
+
 ```ts
-//Arquivo index.ts
-//Local: src/index.tsx
+//File location: src/index.tsx
 
 import * as React from "react";
 import { createRoot } from "react-dom/client";
@@ -200,11 +205,10 @@ root.render(
 
 ```
 
+<p style='font-size:20px;color:pink'>App file</p>
 
 ```ts
-
-//Arquivo App
-//Local: src/App.tsx
+//File location: src/App.tsx
 
 import * as React from "react";
 import { useKeycloak } from "@react-keycloak/web";
@@ -221,12 +225,10 @@ export default function App() {
 
 ```
 
-
+<p style='font-size:20px;color:pink'>Rotas file</p>
 
 ```ts
-
-// Arquivo de rotas
-//Local: src/routers/routes.tsx
+//File location: src/routers/routes.tsx
 
 import React from "react";
 import { Route, Routes } from "react-router-dom";
@@ -262,10 +264,10 @@ export default Routs;
 
 ```
 
-```ts
+<p style='font-size:20px;color:pink'>Api file</p>
 
-//Aquivo Api
-//Local: src/utils/api.ts
+```ts
+//File location: src/utils/api.ts
 
 import axios from "axios";
 
@@ -278,10 +280,10 @@ export default Api;
 
 ```
 
-```ts
+<p style='font-size:20px;color:pink'>App Theme</p>
 
-//Aquivo theme
-//Local: src/theme.ts
+```ts
+//File location: src/theme.ts
 
 import { createTheme } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
@@ -306,8 +308,7 @@ export default theme;
 ```
 
 
-
-## Tecnologias 
+## Technologies 
 
 
 The following tools were used in the construction of the project:
@@ -327,6 +328,6 @@ The following tools were used in the construction of the project:
 
 
 ###### Author : Aniceto Jolela 🥰
- Meu  | [Linkedin](https://www.linkedin.com/in/aniceto-jolela-076547184/))
+ My  | [Linkedin](https://www.linkedin.com/in/aniceto-jolela-076547184/))
 
 
